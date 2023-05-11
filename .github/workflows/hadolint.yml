@@ -18,7 +18,8 @@ jobs:
       - name: Run hadolint
         uses: hadolint/hadolint-action@master
         with:
-          dockerfile: ./Dockerfile
+          dockerfile: ./resources/Dockerfile
+          # dockerfile: ./Dockerfile
           format: tty
           no-fail: false
           verbose: true
