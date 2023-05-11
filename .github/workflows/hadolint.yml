@@ -1,4 +1,4 @@
-name: Hadolint Lint Dockerfile
+name: Lint Dockerfile
 
 on:
   push:
@@ -20,6 +20,6 @@ jobs:
         with:
           dockerfile: ./Dockerfile
           format: tty
-          #output-file: hadolint-results.sarif
           no-fail: false
           verbose: true
+          failure-threshold: error
