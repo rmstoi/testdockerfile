@@ -1,25 +1,35 @@
 name: Lint Dockerfile
 
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     # The branches below must be a subset of the branches above
+#     branches: [ "main" ]
+
+env:
+  d: 'resources/Dockerfile'
+
 on:
   push:
-    branches: [ "main" ]
+    paths:
+    - 'resources/Dockerfile'
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ "main" ]
+    paths:
+    - 'resources/Dockerfile'
 
 jobs:
   hadolint:
-    name: Run hadolint scanning
+    name: Run Hadolint Dockerfile Linter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run hadolint
+      - name: Lint Dockerfile
         uses: hadolint/hadolint-action@master
         with:
           dockerfile: ./resources/Dockerfile
-          # dockerfile: ./Dockerfile
           format: tty
           no-fail: false
           verbose: true
